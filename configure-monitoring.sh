@@ -1,14 +1,14 @@
 #!/bin/bash
 
 #install pre-requs
-echo -n "install CURL? (1 - yes, 2 - no, default - no) > "
+echo -n "install CURL? (1 - yes, default - no) > "
 read installcurl
 echo
 if test "$installcurl" == "1"
 then
     sudo apt-get update && sudo apt-get install curl
 fi
-echo -n "install docker-compose? (1 - yes, 2 - no, default - no) > "
+echo -n "install docker-compose? (1 - yes, default - no) > "
 read installdockercompose
 echo
 if test "$installdockercompose" == "1"
@@ -19,7 +19,7 @@ then
 fi
 
 #Setup Prometheus, cAdvisor and NodeExporter
-echo -n "Install Prometheus, cAdvisor and NodeExporter? (1 - yes, 2 - no, default - no) > "
+echo -n "Install Prometheus, cAdvisor and NodeExporter? (1 - yes, default - no) > "
 read installpcn
 
 if test "$installpcn" == "1"
@@ -44,7 +44,7 @@ then
     echo
 fi
 echo
-echo -n "Install Loki? (1 - yes, 2 - no, default - no) > "
+echo -n "Install Loki? (1 - yes, default - no) > "
 read installloki
 
 if test "$installloki" == "1"
