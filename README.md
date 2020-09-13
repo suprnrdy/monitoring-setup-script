@@ -23,3 +23,38 @@ This is a shell script which automates the installation and configuration for Pr
 ## Steps to Run the Script
 * Download the script to the server where you are running Random Beacon or ECDSA node
 * Run the script using `./configure-monitoring.sh`
+* Respond to the prompts on screen. The first prompt is for if you want to install cURL. It is used for installing docker-compose.
+
+```
+install CURL? (1 - yes, default - no) >
+```
+
+if you enter 1, it installs cURL, else moves to next step
+
+* In next step it asks if you want to install `docker-compose`. If you already have `docker-compose` then you can simply press enter and move to next step, else you can enter 1 on the promt and it will install `docker-compose`
+
+```
+install docker-compose? (1 - yes, default - no) >
+```
+
+* This step asks if you want to install and configure Prometheus, cAdvisor and NodeExporter. Enter `1` on the command prompt to start the configuration. This step would configure and start Prometheus, cAdvisor and NodeExporter docker containers.
+
+```
+Configure Prometheus, cAdvisor and NodeExporter? (1 - yes, default - no) >
+```
+
+* In the last step Configure Loki by entering `1` on command prompt in this step. It would install Loki Docker driver, do driver the configuration in /etc/docker/daemon.json and start Loki docker container
+
+```
+Configure Loki? (1 - yes, default - no) >
+```
+
+This completes the setup. To validate if all the containers have started successfully use `sudo docker ps -a` and you should see an output similar to following.
+
+````
+CONTAINER ID        IMAGE                                       COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+836097d168de        grafana/loki:latest                         "/usr/bin/loki -conf…"   10 seconds ago      Up 7 seconds        0.0.0.0:3100->3100/tcp                           loki
+11c0ee355f4f        prom/prometheus:latest                      "/bin/prometheus --c…"   31 seconds ago      Up 30 seconds       0.0.0.0:9090->9090/tcp                           monitoring_prometheus
+6221c253b8b4        google/cadvisor:latest                      "/usr/bin/cadvisor -…"   35 seconds ago      Up 31 seconds       8080/tcp                                         monitoring_cadvisor
+84a02881907d        prom/node-exporter:latest                   "/bin/node_exporter"     35 seconds ago      Up 31 seconds       9100/tcp                                         monitoring_node_exporter
+````
