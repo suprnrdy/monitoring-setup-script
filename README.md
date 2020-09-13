@@ -12,7 +12,9 @@ This script automates the setup steps described on https://medium.com/@hr12rtk/k
 ## Before you run the script
 * This script does not setup random beacon or ECDSA nodes. It assumes you are already running one of these nodes and want to setup monitoring using Prometheus, Loki and Grafana.
 * Allow access to Ports 9090, 8081 and 3100 from the IP where you run Random Beacon or ECDSA nodes. For example, if you are running ECDSA node on 50.234.1.88 then whitelist `50.234.1.88` to access ports 9090, 8081 and 3100 in network settings of the server.
-* Whitelist Grafana hosted environment IPs available at https://grafana.com/api/hosted-grafana/source-ips.txt (if you are using Grafana cloud) in network settings of your random beacon or ECDSA node. You can also refer to 
+* Whitelist Grafana hosted environment IPs available at https://grafana.com/api/hosted-grafana/source-ips.txt (if you are using Grafana cloud) in network settings of your random beacon or ECDSA node. Please refer to *IP Whitelisting for Hosted Grafana Instances* section at https://medium.com/@hr12rtk/keep-random-beacon-node-monitoring-part-2-5cd037464a6e for more details.
+
+ 
 * Add the following to `config.toml` of your Random Beacon or ECDSA node
 
 ```
