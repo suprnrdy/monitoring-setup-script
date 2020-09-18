@@ -83,7 +83,7 @@ echo
 echo "sudo docker run -dit \
 --restart unless-stopped \
 --log-driver loki \
---log-opt loki-url="http://LOKI-HOST-IP:3100/loki/api/v1/push" \
+--log-opt loki-url="http://$SERVER_IP:3100/loki/api/v1/push" \
 --entrypoint /usr/local/bin/keep-ecdsa \
 --volume \$KEEP_ECDSA_PERSISTENCE_DIR:/mnt/keep-ecdsa/persistence \
 --volume \$KEEP_ECDSA_KEYSTORE_DIR:/mnt/keep-ecdsa/keystore \
