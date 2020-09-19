@@ -18,6 +18,9 @@ then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
+#Get Server IP
+SERVER_IP=$(curl ifconfig.me)
+
 #Setup Prometheus, cAdvisor and NodeExporter
 echo -n "Install Prometheus, cAdvisor and NodeExporter? (1 - yes, default - no) > "
 read installpcn
@@ -60,7 +63,7 @@ then
 
     #install Loki Docker Driver
     sudo docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
-
+    echo $SERVER_IP
     cd /etc/docker
     sudo cp ~/prom-loki-configs/loki/daemon.json daemon.json
     sudo sed -i "s/REPLACE-WITH-SERVER-IP/$SERVER_IP/" daemon.json
@@ -77,7 +80,7 @@ echo
 echo
 echo "Restart Keep Docker Containers with Loki Node Exporter and Metrics Port (8081:8080)"
 echo "------------------------------------------------------------------------------------"
-echo "sample command"
+echo "sample command (>>> Removing -rc* from keep container name will run the prod version)" 
 echo "------------------------------------------------------------------------------------"
 echo
 echo "sudo docker run -dit \
