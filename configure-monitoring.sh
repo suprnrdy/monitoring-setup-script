@@ -85,6 +85,7 @@ echo "--------------------------------------------------------------------------
 echo
 echo "sudo docker run -dit \
 --restart unless-stopped \
+--entrypoint /usr/local/bin/keep-ecdsa \
 --log-driver loki \
 --log-opt loki-url="http://$SERVER_IP:3100/loki/api/v1/push" \
 --entrypoint /usr/local/bin/keep-ecdsa \
