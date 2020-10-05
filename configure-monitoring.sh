@@ -75,6 +75,11 @@ then
     echo
 fi
 
+if test "$installpcn" == "1"
+then
+    echo "Cleaning up config files..."
+    rm -rf ~/prom-loki-configs
+fi
 
 echo
 echo
