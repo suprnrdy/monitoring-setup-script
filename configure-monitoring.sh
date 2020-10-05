@@ -29,9 +29,9 @@ if test "$installpcn" == "1"
 then
     echo "Starting Prometheus, cAdvisor and NodeExporter configuration"
     echo
-    mkdir ~/prometheus 
+    mkdir ~/prometheus
     mkdir ~/prometheus/prometheus-data
-    git clone https://github.com/mutedtommy/prom-loki-configs.git ~/prom-loki-configs
+    git clone https://github.com/suprnrdy/prom-loki-configs ~/prom-loki-configs
     cp ~/prom-loki-configs/prometheus/prometheus.yml ~/prometheus/prometheus.yml
     cd ~/prometheus
     SERVER_IP=$(curl ifconfig.me)
@@ -80,7 +80,7 @@ echo
 echo
 echo "Restart Keep Docker Containers with Loki Node Exporter and Metrics Port (8081:8080)"
 echo "------------------------------------------------------------------------------------"
-echo "sample command (>>> Removing -rc* from keep container name will run the prod version)" 
+echo "sample command (>>> Removing -rc* from keep container name will run the prod version)"
 echo "------------------------------------------------------------------------------------"
 echo
 echo "sudo docker run -dit \
@@ -97,6 +97,6 @@ echo "sudo docker run -dit \
 --name ecdsa \
 -p 3919:3919 \
 -p 8081:8080 \
-keepnetwork/keep-ecdsa-client:v1.2.0-rc.5 --config /mnt/keep-ecdsa/config/config.toml start"
+keepnetwork/keep-ecdsa-client:v1.2.1 --config /mnt/keep-ecdsa/config/config.toml start"
 echo
 echo "------------------------------------------------------------------------------------"
